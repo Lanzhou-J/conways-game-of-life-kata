@@ -425,3 +425,4 @@ fabric.properties
 # BeatPulse healthcheck temp database
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 # End of https://www.gitignore.io/api/rider,csharp,visualstudio
+

@@ -23,8 +23,24 @@ namespace conways_game_of_life
                 new[]{0,0,1,0,0},
                 new[]{0,0,0,0,0},
             };
+            
+            var block = new[] {
+                new[]{0,0,0,0},
+                new[]{0,1,1,0},
+                new[]{0,1,1,0},
+                new[]{0,0,0,0},
+            };
+            
+            var glider = new[] {
+                new[]{0,0,0,0,0,0,0},
+                new[]{0,0,0,0,1,0,0},
+                new[]{0,0,1,0,1,0,0},
+                new[]{0,0,0,1,1,0,0},
+                new[]{0,0,0,0,0,0,0},
+                new[]{0,0,0,0,0,0,0},
+            };
 
-            var initial = toad;
+            var initial = glider;
 
             while (true)
             {

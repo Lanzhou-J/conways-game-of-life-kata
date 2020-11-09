@@ -13,5 +13,48 @@ namespace conways_game_of_life_tests
             
             Assert.Null(output);
         }
+        
+        [Fact]
+        public void TickShould_ReturnAWorldOfDeadCells_WhenInputWorldCellsAreDead()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{0,0,0},
+                new[]{0,0,0},
+                new[]{0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0},
+                new[]{0,0,0},
+                new[]{0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+            Assert.Equal(initial,output);
+        }
+
+        [Fact]
+        public void CellRule1()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{0,0,0},
+                new[]{0,1,0},
+                new[]{0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0},
+                new[]{0,0,0},
+                new[]{0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+          
+            //assert
+            Assert.NotEqual(initial,output);
+            Assert.Equal(results,output);
+        }
     }
 }

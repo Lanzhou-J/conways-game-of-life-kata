@@ -135,6 +135,30 @@ namespace conways_game_of_life_tests
             Assert.Equal(results, initial);
         }
         
+        [Fact]
+        public void EvolveShould_LetLiveCellDie_WhenItHasMoreThan3LiveNeighboursInALargerWorld()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{1,1,1,0},
+                new[]{1,1,1,0},
+                new[]{1,1,1,0},
+                new[]{0,0,0,0},
+            };
+            var results = new[] {
+                new[]{1,0,1,0},
+                new[]{0,0,0,0},
+                new[]{1,0,1,0},
+                new[]{0,0,0,0}
+            };
+          
+            //act
+            Tick.Evolve(initial);
+          
+            //assert
+            Assert.Equal(results, initial);
+        }
+        
         // [Fact]
         // public void EvolveShould_EnableLiveCellLiveToTheNextGeneration_WhenHaving2or3LiveNeighbours()
         // {

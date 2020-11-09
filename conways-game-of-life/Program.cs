@@ -7,13 +7,24 @@ namespace conways_game_of_life
     {
         static void Main(string[] args)
         {
-            var initial = new[] {
+            var toad = new[] {
+                new[]{0,0,0,0,0,0},
+                new[]{0,0,0,1,0,0},
+                new[]{0,1,0,0,1,0},
+                new[]{0,1,0,0,1,0},
+                new[]{0,0,1,0,0,0},
+                new[]{0,0,0,0,0,0}
+            };
+            
+            var blinker = new[] {
                 new[]{0,0,0,0,0},
                 new[]{0,0,1,0,0},
                 new[]{0,0,1,0,0},
                 new[]{0,0,1,0,0},
-                new[]{0,0,0,0,0}
+                new[]{0,0,0,0,0},
             };
+
+            var initial = toad;
 
             while (true)
             {

@@ -4,7 +4,7 @@ namespace conways_game_of_life
     {
         public static int[][] Evolve(int[][] input)
         {
-            return null;
+            return input;
         }
         
         public static int[][] Evolve()

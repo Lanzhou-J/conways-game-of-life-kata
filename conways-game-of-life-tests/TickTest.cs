@@ -76,6 +76,30 @@ namespace conways_game_of_life_tests
         }
         
         [Fact]
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOnlyOneLiveCellRegardlessOfWorldSize()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{0,0,0,0},
+                new[]{0,1,0,0},
+                new[]{0,0,1,0},
+                new[]{0,0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+          
+            //assert
+            Assert.Equal(results,output);
+        }
+        
+        [Fact]
         public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOneLiveCellInMiddle()
         {
             //arrange

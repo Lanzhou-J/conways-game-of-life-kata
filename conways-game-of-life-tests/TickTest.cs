@@ -159,27 +159,26 @@ namespace conways_game_of_life_tests
             Assert.Equal(results, initial);
         }
         
-        // [Fact]
-        // public void EvolveShould_EnableLiveCellLiveToTheNextGeneration_WhenHaving2or3LiveNeighbours()
-        // {
-        //     //arrange
-        //     var initial = new[] {
-        //         new[]{1,0,1},
-        //         new[]{0,1,0},
-        //         new[]{1,0,0},
-        //     };
-        //     var results = new[] {
-        //         new[]{1,0,1},
-        //         new[]{0,1,0},
-        //         new[]{1,0,0},
-        //     };
-        //   
-        //     //act
-        //     var output = Tick.Evolve(initial);
-        //   
-        //     //assert
-        //     Assert.NotEqual(initial,output);
-        //     Assert.Equal(results,output);
-        // }
+        [Fact]
+        public void EvolveShould_EnableLiveCellLiveToTheNextGeneration_WhenHaving2or3LiveNeighbours()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{1,0,1},
+                new[]{0,1,0},
+                new[]{1,0,0},
+            };
+            var results = new[] {
+                new[]{1,0,1},
+                new[]{0,1,0},
+                new[]{1,0,0},
+            };
+          
+            //act
+            Tick.Evolve(initial);
+          
+            //assert
+            Assert.Equal(results,initial);
+        }
     }
 }

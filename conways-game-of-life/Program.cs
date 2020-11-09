@@ -6,7 +6,14 @@ namespace conways_game_of_life
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var initial = new[] {
+                new[]{1,1,1,0},
+                new[]{1,1,1,0},
+                new[]{1,1,1,0},
+                new[]{0,0,0,0},
+            };
+            
+            
         }
     }
 }

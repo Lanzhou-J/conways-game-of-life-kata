@@ -106,14 +106,32 @@ namespace conways_game_of_life
                 }
                 
             }
-
-            if (i!=0 && j!=0 && i!=rowLength-1 && j!=columnLength-1)
+            else
             {
-                neighbours = new[]
+                if (j == 0)
                 {
-                    input[i - 1][j - 1], input[i - 1][j], input[i - 1][j + 1], input[i][j - 1], input[i][j + 1], input[i + 1][j - 1],
-                    input[i + 1][j], input[i + 1][j + 1]
-                };
+                    neighbours = new[]
+                    {
+                        input[i - 1][j], input[i - 1][j + 1], input[i][j + 1], input[i + 1][j], input[i + 1][j + 1],
+                        input[i - 1][columnLength - 1], input[i][columnLength - 1], input[i + 1][columnLength - 1]
+                    };
+                }
+                else if (j == columnLength - 1)
+                {
+                    neighbours = new[]
+                    {
+                        input[i - 1][j - 1], input[i - 1][j], input[i][j - 1], input[i + 1][j - 1], input[i + 1][j], input[i - 1][0],
+                        input[i][0], input[i + 1][0]
+                    };
+                }
+                else
+                {
+                    neighbours = new[]
+                    {
+                        input[i - 1][j - 1], input[i - 1][j], input[i - 1][j + 1], input[i][j - 1], input[i][j + 1], input[i + 1][j - 1],
+                        input[i + 1][j], input[i + 1][j + 1]
+                    };
+                }
             }
 
             return neighbours;

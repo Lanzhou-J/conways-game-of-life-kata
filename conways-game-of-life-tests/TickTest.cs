@@ -30,7 +30,7 @@ namespace conways_game_of_life_tests
           
             //act
             var output = Tick.Evolve(initial);
-            Assert.Equal(initial,output);
+            Assert.Equal(results,output);
         }
 
         [Fact]

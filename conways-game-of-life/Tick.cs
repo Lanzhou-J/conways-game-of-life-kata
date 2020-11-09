@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace conways_game_of_life
@@ -9,6 +9,7 @@ namespace conways_game_of_life
         {
             var rowLength = input.Length;
             var columnLength = input[0].Length;
+            List<int> liveCellNumbers = new List<int>();
 
             for (var i = 0; i < rowLength; i++)
             {
@@ -16,23 +17,34 @@ namespace conways_game_of_life
                 {
                     var neighbours = GetNeighbours(input, i, j);
                     var liveCells = neighbours.Count(item => item == 1);
+                    liveCellNumbers.Add(liveCells);
+                }
+            }
+
+            var index = 0;
+            for (var i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < columnLength; j++)
+                {
                     if ( input[i][j]==1)
                     {
-                        if (liveCells > 3)
+                        if (liveCellNumbers[index] > 3)
                         {
                             input[i][j] = 0;
-                        }else if (liveCells < 2)
+                        }else if (liveCellNumbers[index] < 2)
                         {
                             input[i][j] = 0;
                         }
                     }
                     else
                     {
-                        if (liveCells==3)
+                        if (liveCellNumbers[index]==3)
                         {
                             input[i][j] = 1;
                         }
                     }
+
+                    index++;
                 }
             }
         }
@@ -49,7 +61,7 @@ namespace conways_game_of_life
                 {
                     neighbours = new[]
                     {
-                        input[0][1], input[1][0], input[1][1], input[rowLength-1][columnLength-1], input[rowLength-1][0], input[rowLength-1][1], input[0][columnLength-1], input[1][columnLength-1] 
+                        input[i][j+1], input[i+1][j], input[i+1][j+1], input[rowLength-1][columnLength-1], input[rowLength-1][j], input[rowLength-1][j+1], input[i][columnLength-1], input[i+1][columnLength-1] 
                     };
                     
                 }

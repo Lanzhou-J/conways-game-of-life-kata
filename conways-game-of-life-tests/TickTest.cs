@@ -15,7 +15,7 @@ namespace conways_game_of_life_tests
         }
         
         [Fact]
-        public void TickShould_ReturnAWorldOfDeadCells_WhenInputWorldCellsAreDead()
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldCellsAreDead()
         {
             //arrange
             var initial = new[] {
@@ -35,7 +35,7 @@ namespace conways_game_of_life_tests
         }
 
         [Fact]
-        public void CellRule1()
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOnlyOneLiveCell()
         {
             //arrange
             var initial = new[] {

@@ -32,6 +32,26 @@ namespace conways_game_of_life_tests
             var output = Tick.Evolve(initial);
             Assert.Equal(results,output);
         }
+        
+        [Fact]
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldCellsAreDeadRegardlessOfWorldSize()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+                new[]{0,0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+            Assert.Equal(results,output);
+        }
 
         [Fact]
         public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOnlyOneLiveCell()
@@ -52,7 +72,6 @@ namespace conways_game_of_life_tests
             var output = Tick.Evolve(initial);
           
             //assert
-            Assert.NotEqual(initial,output);
             Assert.Equal(results,output);
         }
         
@@ -75,7 +94,6 @@ namespace conways_game_of_life_tests
             var output = Tick.Evolve(initial);
           
             //assert
-            Assert.NotEqual(initial,output);
             Assert.Equal(results,output);
         }
         
@@ -98,7 +116,6 @@ namespace conways_game_of_life_tests
             var output = Tick.Evolve(initial);
           
             //assert
-            Assert.NotEqual(initial,output);
             Assert.Equal(results,output);
         }
         
@@ -121,7 +138,6 @@ namespace conways_game_of_life_tests
             var output = Tick.Evolve(initial);
           
             //assert
-            Assert.NotEqual(initial,output);
             Assert.Equal(results,output);
         }
         

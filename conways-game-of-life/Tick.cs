@@ -4,11 +4,18 @@ namespace conways_game_of_life
     {
         public static int[][] Evolve(int[][] input)
         {
-            return new[] {
-                new[]{0,0,0},
-                new[]{0,0,0},
-                new[]{0,0,0},
-            };
+            var rowLength = input.Length;
+            var columnLength = input[0].Length;
+
+            for (var i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < columnLength; j++)
+                {
+                    input[i][j] = 0;
+                }
+            }
+
+            return input;
         }
         
         public static int[][] Evolve()

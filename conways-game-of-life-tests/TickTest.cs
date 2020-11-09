@@ -1,4 +1,3 @@
-using System;
 using conways_game_of_life;
 using Xunit;
 
@@ -41,6 +40,52 @@ namespace conways_game_of_life_tests
             var initial = new[] {
                 new[]{0,0,0},
                 new[]{0,1,0},
+                new[]{0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0},
+                new[]{0,0,0},
+                new[]{0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+          
+            //assert
+            Assert.NotEqual(initial,output);
+            Assert.Equal(results,output);
+        }
+        
+        [Fact]
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOneLiveCellInMiddle()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{0,0,0},
+                new[]{0,1,0},
+                new[]{0,0,0},
+            };
+            var results = new[] {
+                new[]{0,0,0},
+                new[]{0,0,0},
+                new[]{0,0,0},
+            };
+          
+            //act
+            var output = Tick.Evolve(initial);
+          
+            //assert
+            Assert.NotEqual(initial,output);
+            Assert.Equal(results,output);
+        }
+        
+        [Fact]
+        public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldHasOneLiveCellInTopLeft()
+        {
+            //arrange
+            var initial = new[] {
+                new[]{1,0,0},
+                new[]{0,0,0},
                 new[]{0,0,0},
             };
             var results = new[] {

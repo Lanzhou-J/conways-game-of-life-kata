@@ -16,15 +16,28 @@ namespace conways_game_of_life
                 {
                     var neighbours = GetNeighbours(input, i, j);
                     var liveCells = neighbours.Count(item => item == 1);
-                    if ( input[i][j]==1 && liveCells > 3)
+                    if ( input[i][j]==1)
                     {
-                        input[i][j] = 0;
+                        if (liveCells > 3)
+                        {
+                            input[i][j] = 0;
+                        }else if (liveCells < 2)
+                        {
+                            input[i][j] = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (liveCells==3)
+                        {
+                            input[i][j] = 1;
+                        }
                     }
                 }
             }
         }
         
-        private static int[] GetNeighbours(int[][] input, int i, int j)
+        public static int[] GetNeighbours(int[][] input, int i, int j)
         {
             var rowLength = input.Length;
             var columnLength = input[0].Length;
@@ -59,22 +72,32 @@ namespace conways_game_of_life
             {
                 if (j == 0)
                 {
-                    
+                    neighbours = new[]
+                    {
+                        input[rowLength-2][0], input[rowLength-2][1], input[rowLength-1][1],input[0][j], input[0][j+1], input[0][columnLength-1], input[rowLength-1][columnLength-1], input[rowLength-2][columnLength-1]
+                    };
+
                 }
                 else if (j == columnLength - 1)
                 {
-                    
+                    neighbours = new[]
+                    {
+                        input[i-1][j-1], input[i-1][j], input[i][j-1],input[0][j-1], input[0][j], input[0][0], input[rowLength-1][0], input[rowLength-2][0]
+                    };
                 }
                 else
                 {
-                    
+                    neighbours = new[]
+                    {
+                        input[i-1][j-1], input[i-1][j], input[i-1][j+1],input[i][j-1], input[i][j+1], input[0][j-1], input[0][j], input[0][j+1]
+                    };
                 }
                 
             }
 
             if (i!=0 && j!=0 && i!=rowLength-1 && j!=columnLength-1)
             {
-                neighbours = new int[8]
+                neighbours = new[]
                 {
                     input[i - 1][j - 1], input[i - 1][j], input[i - 1][j + 1], input[i][j - 1], input[i][j + 1], input[i + 1][j - 1],
                     input[i + 1][j], input[i + 1][j + 1]

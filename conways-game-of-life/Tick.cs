@@ -2,7 +2,7 @@ namespace conways_game_of_life
 {
     public static class Tick
     {
-        public static int[][] Evolve(int[][] input)
+        public static void Evolve(int[][] input)
         {
             var rowLength = input.Length;
             var columnLength = input[0].Length;
@@ -14,8 +14,7 @@ namespace conways_game_of_life
                     input[i][j] = 0;
                 }
             }
-
-            return input;
+            
         }
         
         public static int[][] Evolve()

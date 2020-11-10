@@ -26,9 +26,9 @@ namespace conways_game_of_life
         public int Row { get; }
         public int Column { get; }
 
-        public string GetCellValue(int x, int y)
+        public Cell GetCell(int x, int y)
         {
-            return _squares[x, y].ToString();
+            return _squares[x, y];
         }
     }
 }

@@ -9,7 +9,7 @@ namespace conways_game_of_life
             State = State.Dead;
         }
 
-        private State State { get; set; }
+        public State State { get; set; }
         
         public void ChangeState()
         {

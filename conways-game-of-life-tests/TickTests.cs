@@ -24,8 +24,8 @@ namespace conways_game_of_life_tests
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    var actualCellValue = initial.GetCellValue(i, j);
-                    var expectedCellValue = result[i][j].ToString();
+                    var actualCellValue = initial.GetCell(i, j).State;
+                    var expectedCellValue = result[i][j];
                     Assert.Equal(expectedCellValue,actualCellValue);
                 }
             }

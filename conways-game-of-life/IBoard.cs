@@ -4,6 +4,6 @@ namespace conways_game_of_life
     {
         int Row { get; }
         int Column { get; }
-        string GetCellValue(int x, int y);
+        Cell GetCell(int x, int y);
     }
 }

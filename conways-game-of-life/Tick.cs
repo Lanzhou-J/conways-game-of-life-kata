@@ -6,7 +6,6 @@ namespace conways_game_of_life
     {
         public static void Evolve(Board input)
         {
-            throw new NotImplementedException();
         }
     }
 }

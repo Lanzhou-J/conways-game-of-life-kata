@@ -1,7 +1,12 @@
+using System;
+
 namespace conways_game_of_life
 {
-    public class Tick
+    public static class Tick
     {
-        
+        public static void Evolve(Board input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

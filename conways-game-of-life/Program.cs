@@ -56,7 +56,7 @@ namespace conways_game_of_life
                 }
                 Thread.Sleep(1000);
                 Console.Clear();
-                Tick.Evolve(initial);
+                TickInt.Evolve(initial);
             }
             
             

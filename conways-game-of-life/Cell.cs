@@ -6,17 +6,22 @@ namespace conways_game_of_life
     {
         public Cell()
         {
-            CellState = CellState.Dead;
+            State = State.Dead;
         }
 
-        private CellState CellState { get; set; }
+        private State State { get; set; }
+        
+        public void ChangeState()
+        {
+            State = State == State.Live ? State.Dead : State.Live;
+        }
 
         public override string ToString()
         {
-            return CellState switch
+            return State switch
             {
-                CellState.Dead => "0",
-                CellState.Live => "1",
+                State.Dead => "0",
+                State.Live => "1",
                 _ => "0"
             };
         }

@@ -3,7 +3,7 @@ using Xunit;
 
 namespace conways_game_of_life_tests
 {
-    public class TickTest
+    public class TickIntTests
     {
         [Fact]
         public void EvolveShould_ReturnAWorldOfDeadCells_WhenInputWorldCellsAreDead()
@@ -21,7 +21,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
             Assert.Equal(results, initial);
         }
         
@@ -41,7 +41,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
             Assert.Equal(results, initial);
         }
         
@@ -61,7 +61,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results, initial);
@@ -83,7 +83,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results, initial);
@@ -107,7 +107,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results, initial);
@@ -129,7 +129,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results, initial);
@@ -153,7 +153,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results, initial);
@@ -175,7 +175,7 @@ namespace conways_game_of_life_tests
             };
           
             //act
-            Tick.Evolve(initial);
+            TickInt.Evolve(initial);
           
             //assert
             Assert.Equal(results,initial);

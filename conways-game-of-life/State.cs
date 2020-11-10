@@ -1,6 +1,6 @@
 namespace conways_game_of_life
 {
-    public enum CellState
+    public enum State
     {
         Live,
         Dead

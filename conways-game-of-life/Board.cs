@@ -1,6 +1,6 @@
 namespace conways_game_of_life
 {
-    public class Board:IBoard
+    public class Board
     {
         private Cell[,] _squares;
 
@@ -20,24 +20,24 @@ namespace conways_game_of_life
         
         private void CreateBoard()
         {
-            _squares = new Cell[Row, Column];
+            _squares = new Cell[Row,Column];
             for (var x = 0; x < Row; x++)
             {
                 for (var y = 0; y < Column; y++)
                 {
-                    _squares[x, y] = new Cell();
+                    _squares[x,y] = new Cell();
                 }
             }
         }
         
         private void CreateBoard(State[][] states)
         {
-            _squares = new Cell[Row, Column];
+            _squares = new Cell[Row,Column];
             for (var x = 0; x < Row; x++)
             {
                 for (var y = 0; y < Column; y++)
                 {
-                    _squares[x, y] = new Cell {State = states[x][y]};
+                    _squares[x,y] = new Cell {State = states[x][y]};
                 }
             }
         }
@@ -47,12 +47,13 @@ namespace conways_game_of_life
 
         public Cell GetCell(int x, int y)
         {
-            return _squares[x, y];
+            return _squares[x,y];
         }
         
         public void ChangeCell(int x, int y)
         { 
-            _squares[x, y].ChangeState();
+            _squares[x,y].ChangeState();
         }
+        
     }
 }

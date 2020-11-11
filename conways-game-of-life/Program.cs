@@ -40,26 +40,7 @@ namespace conways_game_of_life
                 new[]{0,0,0,0,0,0,0},
             };
 
-            var initial = glider;
-
-            while (true)
-            {
-                var word = "";
-                foreach (var array in initial)
-                {
-                    foreach (var item in array)
-                    {
-                        word += $"{item} ";
-                    }
-                    Console.WriteLine(word);
-                    word = "";
-                }
-                Thread.Sleep(1000);
-                Console.Clear();
-                TickInt.Evolve(initial);
-            }
-            
-            
+            var initial = blinker;
         }
     }
 }

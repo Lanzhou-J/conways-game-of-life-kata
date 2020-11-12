@@ -13,13 +13,17 @@ namespace conways_game_of_life_tests
         }
         
         [Fact]
-        public void GenerateNewGenerationShould_ReturnAGenerationSameStateAsBeforeWithCountPlusOne_WhenNoRuleArgument()
+        public void GenerateNewGenerationShould_ReturnAGenerationWithCountPlusOne_WhenNoRuleArgument()
         {
-            var input = new Generation();
+            var deadCell = new Cell();
+            var cells = new[] {
+                new[]{deadCell}
+            };
+            var input = new Generation(cells);
             Assert.Equal(1,input.GenerationCount);
             var result = Tick.GenerateNewGeneration(input);
-            Assert.Equal(2,result)
-            
+            Assert.Equal(2, result.GenerationCount);
+
         }
     }
 }

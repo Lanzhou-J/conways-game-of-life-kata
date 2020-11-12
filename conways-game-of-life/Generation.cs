@@ -20,5 +20,12 @@ namespace conways_game_of_life
         {
             GenerationCount += 1;
         }
+
+        public State GetCellState(int x, int y)
+        {
+            var cell = Cells[x][y];
+            var state = cell.State;
+            return state;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace conways_game_of_life
             Column = cells[0].Length;
         }
         
-        public Generation GenerateNewGeneration()
+        public Generation GenerateNewGeneration(Rule rule)
         {
             GenerationCount++;
             return this;

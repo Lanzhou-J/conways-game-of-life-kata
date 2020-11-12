@@ -11,7 +11,6 @@ namespace conways_game_of_life
         }
 
         public State State { get; set; }
-        public Coordinate Coordinate { get; set; }
 
         public void ChangeState()
         {

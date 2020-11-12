@@ -14,6 +14,15 @@ namespace conways_game_of_life_tests
             var result = rule.IsOvercrowdingForLiveCell(liveNeighbours);
             Assert.True(result);
         }
+        
+        [Fact]
+        public void IsUnderpopulatedForLiveCellShould_ReturnTrue_WhenLiveNeighboursOverThree()
+        {
+            var liveNeighbours = 1;
+            var rule = new Rule();
+            var result = rule.IsUnderpopulationForLiveCell(liveNeighbours);
+            Assert.True(result);
+        }
 
     }
 }

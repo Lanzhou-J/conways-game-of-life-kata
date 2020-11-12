@@ -136,8 +136,10 @@ namespace conways_game_of_life_tests
                 for (int j = 0; j < input.Column; j++)
                 {
                     var expectState = expectCells[i][j].State;
-                    var actualState = result.Cells[i][j].State;
+                    var actualState = result.GetCellState(i,j);
+                    var inputState = input.GetCellState(i, j);
                     Assert.Equal(expectState,actualState);
+                    Assert.NotEqual(expectState,inputState);
                 }
             }
         }

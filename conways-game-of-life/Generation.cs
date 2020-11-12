@@ -18,10 +18,14 @@ namespace conways_game_of_life
             Column = cells[0].Length;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
-
-        public void ChangeGenerationCount()
+        
+        public Generation(Cell[][] cells, int generationCount)
         {
-            GenerationCount += 1;
+            Cells = cells;
+            GenerationCount = generationCount;
+            Row = cells.Length;
+            Column = cells[0].Length;
+            // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
 
         public State GetCellState(int x, int y)

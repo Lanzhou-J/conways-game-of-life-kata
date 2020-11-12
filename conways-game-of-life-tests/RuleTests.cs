@@ -16,11 +16,20 @@ namespace conways_game_of_life_tests
         }
         
         [Fact]
-        public void IsUnderpopulatedForLiveCellShould_ReturnTrue_WhenLiveNeighboursOverThree()
+        public void IsUnderpopulatedForLiveCellShould_ReturnTrue_WhenLiveNeighboursLessThanTwo()
         {
             var liveNeighbours = 1;
             var rule = new Rule();
             var result = rule.IsUnderpopulationForLiveCell(liveNeighbours);
+            Assert.True(result);
+        }
+        
+        [Fact]
+        public void IsGreatConditionForDeadCellShould_ReturnTrue_WhenThreeLiveNeighbours()
+        {
+            var liveNeighbours = 3;
+            var rule = new Rule();
+            var result = rule.IsGreatConditionForDeadCell(liveNeighbours);
             Assert.True(result);
         }
 

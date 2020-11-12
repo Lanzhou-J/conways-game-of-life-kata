@@ -63,5 +63,30 @@ namespace conways_game_of_life_tests
                 }
             }
         }
+
+        [Fact]
+        public void GenerateNewGenerationShould_ReturnAGenerationOfDeadCells_AccordingToRule()
+        {
+            var deadCell = new Cell();
+            var liveCell = new Cell();
+            liveCell.ChangeState();
+            var cells = new[] {
+                new[]{deadCell, deadCell,deadCell},
+                new []{deadCell, deadCell,deadCell},
+                new []{deadCell, deadCell,deadCell},
+            };
+            var input = new Generation(cells);
+            var rule = new Rule();
+            var result = Tick.GenerateNewGeneration(input,rule);
+            for (int i = 0; i < input.Row; i++)
+            {
+                for (int j = 0; j < input.Column; j++)
+                {
+                    var expectState = input.Cells[i][j].State;
+                    var actualState = result.Cells[i][j].State;
+                    Assert.Equal(expectState,actualState);
+                }
+            }
+        }
     }
 }

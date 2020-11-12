@@ -9,6 +9,11 @@ namespace conways_game_of_life
         {
             State = State.Dead;
         }
+        
+        public Cell(State state)
+        {
+            State = state;
+        }
 
         public State State { get; set; }
 

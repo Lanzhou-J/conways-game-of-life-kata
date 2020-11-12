@@ -29,8 +29,7 @@ namespace conways_game_of_life_tests
         public void GenerateNewGenerationShould_ReturnAGenerationWithCountPlusOne_WhenNoRuleArgument_WithLiveCells()
         {
             var deadCell = new Cell();
-            var liveCell = new Cell();
-            liveCell.ChangeState();
+            var liveCell = new Cell(State.Live);
             var cells = new[] {
                 new[]{deadCell, liveCell},
                 new []{deadCell, liveCell}
@@ -45,8 +44,7 @@ namespace conways_game_of_life_tests
         public void GenerateNewGenerationShould_ReturnAGenerationWithSameCellStates_WhenNoRuleArgument()
         {
             var deadCell = new Cell();
-            var liveCell = new Cell();
-            liveCell.ChangeState();
+            var liveCell = new Cell(State.Live);
             var cells = new[] {
                 new[]{deadCell, liveCell},
                 new []{deadCell, liveCell}
@@ -68,8 +66,7 @@ namespace conways_game_of_life_tests
         public void GenerateNewGenerationShould_ReturnAGenerationOfDeadCells_AccordingToRule()
         {
             var deadCell = new Cell();
-            var liveCell = new Cell();
-            liveCell.ChangeState();
+            
             var cells = new[] {
                 new[]{deadCell, deadCell,deadCell},
                 new []{deadCell, deadCell,deadCell},

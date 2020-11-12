@@ -16,7 +16,7 @@ namespace conways_game_of_life
             GenerationCount = 1;
             Row = cells.Length;
             Column = cells[0].Length;
-            LiveNeighboursCounts = GetLiveNeighboursCounts();
+            // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
 
         public void ChangeGenerationCount()
@@ -31,9 +31,9 @@ namespace conways_game_of_life
             return state;
         }
 
-        public int[][] GetLiveNeighboursCounts()
-        {
-            
-        }
+        // public int[][] GetLiveNeighboursCounts()
+        // {
+        //     
+        // }
     }
 }

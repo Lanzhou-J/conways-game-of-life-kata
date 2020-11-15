@@ -19,6 +19,29 @@ namespace conways_game_of_life
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
         
+        public Generation(State[][] states)
+        {
+            Cells = CreateCells(states);
+            GenerationCount = 1;
+            Row = Cells.Length;
+            Column = Cells[0].Length;
+            // LiveNeighboursCounts = GetLiveNeighboursCounts();
+        }
+
+        private Cell[][] CreateCells(State[][] states)
+        {
+            var cells = new Cell[states.GetLength(0)][];
+            for (int i = 0; i < states.GetLength(0); i++)
+            {
+                for (int j = 0; j < states.GetLength(1); j++)
+                {
+                    cells[i][j] = new Cell(states[i][j]);
+                }
+            }
+
+            return cells;
+        }
+
         public Generation(Cell[][] cells, int generationCount)
         {
             Cells = cells;

@@ -100,19 +100,24 @@ namespace conways_game_of_life
             }
             else
             {
-                for (var i = -1; i <= 1; i++)
-                {
-                    for (var j = -1; j <= 1; j++)
-                    {
-                        if (CellLocationIsInTheCenter(i, j)) continue;
-                        var neighbourX = GetNeighbourX(cell, i);
-                        var neighbourY = GetNeighbourY(cell, j);
-                        var neighbour = Cells[neighbourX][neighbourY];
-                        neighbours.Add(neighbour);
-                    }
-                }
+                GetNeighboursFromA3Times3AreaAroundTheCell(cell, neighbours);
             }
             return neighbours;
+        }
+
+        private void GetNeighboursFromA3Times3AreaAroundTheCell(Cell cell, List<Cell> neighbours)
+        {
+            for (var i = -1; i <= 1; i++)
+            {
+                for (var j = -1; j <= 1; j++)
+                {
+                    if (CellLocationIsInTheCenter(i, j)) continue;
+                    var neighbourX = GetNeighbourX(cell, i);
+                    var neighbourY = GetNeighbourY(cell, j);
+                    var neighbour = Cells[neighbourX][neighbourY];
+                    neighbours.Add(neighbour);
+                }
+            }
         }
 
         private static bool CellLocationIsInTheCenter(int i, int j)

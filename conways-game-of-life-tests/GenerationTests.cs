@@ -130,8 +130,8 @@ namespace conways_game_of_life_tests
             Assert.Equal(8,result.Count);
             var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
             var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
-            Assert.Equal(7, deadNeighbours.Count);
-            Assert.Single(liveNeighbours);
+            Assert.Equal(8, deadNeighbours.Count);
+            Assert.Empty(liveNeighbours);
         }
 
     }

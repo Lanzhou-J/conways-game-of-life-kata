@@ -134,7 +134,7 @@ namespace conways_game_of_life
                 {
                     for (int j = -1; j <= 1; j++)
                     {
-                        if (i != cell.X || j != cell.Y)
+                        if (i != 0 || j != 0)
                         {
                             neighbours.Add(Cells[cell.X+i][cell.Y+j]);
                         }

@@ -15,14 +15,14 @@ namespace conways_game_of_life
 
         public static int LatestGenerationCount { get; private set; }
 
-        public Cell CreateCellBasedOnCellState(Cell cell)
-        {
-            if (cell.State == State.Live)
-            {
-                return new Cell(State.Dead);
-            }
-            return new Cell(State.Live);
-        }
+        // public Cell CreateCellBasedOnCellState(Cell cell)
+        // {
+        //     if (cell.State == State.Live)
+        //     {
+        //         return new Cell(State.Dead);
+        //     }
+        //     return new Cell(State.Live);
+        // }
 
         public Generation(Cell[][] cells)
         {
@@ -52,7 +52,7 @@ namespace conways_game_of_life
                cells[i] = new Cell[column];
                for (int j = 0; j < column; j++)
                {
-                   cells[i][j] = new Cell();
+                   cells[i][j] = new Cell(i,j);
                }
            }
            return cells;
@@ -69,26 +69,38 @@ namespace conways_game_of_life
 
         private Cell[][] CreateCells(State[][] states)
         {
-            var cells = new Cell[states.GetLength(0)][];
-            for (int i = 0; i < states.GetLength(0); i++)
+            var row = states.GetLength(0);
+            var column = states[0].Length;
+            var cells = new Cell[row][];
+            for (int i = 0; i < row; i++)
             {
-                cells[i] = new Cell[states.GetLength(1)];
-                for (int j = 0; j < states.GetLength(1); j++)
+                cells[i] = new Cell[column];
+                for (int j = 0; j < column; j++)
                 {
-                    cells[i][j] = new Cell(states[i][j]);
+                    cells[i][j] = new Cell(states[i][j], i, j);
                 }
             }
 
             return cells;
         }
 
-        public Generation(Cell[][] cells, int generationCount)
+        // public Generation(Cell[][] cells, int generationCount)
+        // {
+        //     Cells = cells;
+        //     GenerationCount = generationCount;
+        //     LatestGenerationCount = generationCount;
+        //     Row = cells.Length;
+        //     Column = cells[0].Length;
+        //     // LiveNeighboursCounts = GetLiveNeighboursCounts();
+        // }
+        
+        public Generation(State[][] states, int generationCount)
         {
-            Cells = cells;
+            Cells = CreateCells(states);
             GenerationCount = generationCount;
-            LatestGenerationCount = generationCount;
-            Row = cells.Length;
-            Column = cells[0].Length;
+            Row = Cells.Length;
+            Column = Cells[0].Length;
+            LatestGenerationCount = GenerationCount;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
 
@@ -105,6 +117,11 @@ namespace conways_game_of_life
         // }
 
         public List<Cell> GetNeighbours()
+        {
+            return new List<Cell>();
+        }
+        
+        public List<Cell> GetNeighbours(Cell cell)
         {
             return new List<Cell>();
         }

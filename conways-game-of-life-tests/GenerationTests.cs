@@ -8,13 +8,11 @@ namespace conways_game_of_life_tests
         [Fact]
         public void GetCellStateShould_ReturnStateOfCell_WhenCellIndexWasProvided()
         {
-            var deadCell = new Cell();
-            var liveCell = new Cell(State.Live);
-            var cells = new[] {
-                new[]{deadCell, liveCell},
-                new []{deadCell, liveCell}
+            var cellStates = new[] {
+                new[]{State.Dead, State.Live},
+                new []{State.Dead, State.Live}
             };
-            var generation = new Generation(cells,1);
+            var generation = new Generation(cellStates,1);
             var result = generation.GetCellState(0, 0);
             Assert.Equal(State.Dead, result);
         }
@@ -22,15 +20,39 @@ namespace conways_game_of_life_tests
         [Fact]
         public void GetNeighboursShould_ReturnEmptyList_WhenNoArgument()
         {
-            var deadCell = new Cell();
-            var liveCell = new Cell(State.Live);
-            var cells = new[] {
-                new[]{deadCell, liveCell},
-                new []{deadCell, liveCell}
+            var cellStates = new[] {
+                new[]{State.Dead, State.Live},
+                new []{State.Dead, State.Live}
             };
-            var generation = new Generation(cells,1);
+            var generation = new Generation(cellStates,1);
             var result = generation.GetNeighbours();
             Assert.Empty(result);
+        }
+        
+        [Fact]
+        public void GetNeighboursShould_ReturnEmptyList_WhenThereIsOnlyOneCell()
+        {
+            var cellStates = new[] {
+                new[]{State.Dead}
+                };
+            var generation = new Generation(cellStates,1);
+            var firstCell = generation.Cells[0][0];
+            var result = generation.GetNeighbours(firstCell);
+            Assert.Empty(result);
+        }
+        
+        [Fact]
+        public void GetNeighboursShould_ReturnAListWithOneCell_WhenThereAreTwoCells()
+        {
+            var dead = State.Dead;
+            var live = State.Live;
+            var cellStates = new[] {
+                new[]{dead, live},
+            };
+            var generation = new Generation(cellStates,1);
+            var firstCell = generation.Cells[0][0];
+            var result = generation.GetNeighbours(firstCell);
+            Assert.NotEmpty(result);
         }
 
     }

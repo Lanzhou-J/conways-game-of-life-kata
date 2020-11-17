@@ -191,5 +191,23 @@ namespace conways_game_of_life_tests
             Assert.Single(liveNeighbours);
         }
 
+        [Fact]
+        public void GetNeighboursShould_ReturnACorrectListOfNeighbours_WhenTheCellIsOnRightBorder()
+        {
+            var cellStates = new[] {
+                new[]{_live, _dead, _dead, _dead},
+                new[]{_dead, _live, _live, _dead},
+                new[]{_dead, _dead, _dead, _live}
+            };
+            
+            var generation = new Generation(cellStates,1);
+            var cell = generation.GetCell(1,3);
+            var result = generation.GetNeighbours(cell);
+            Assert.Equal(8,result.Count);
+            var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
+            var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
+            Assert.Equal(5, deadNeighbours.Count);
+            Assert.Equal(3,liveNeighbours.Count);
+        }
     }
 }

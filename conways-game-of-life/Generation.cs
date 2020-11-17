@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace conways_game_of_life
@@ -98,57 +99,14 @@ namespace conways_game_of_life
             return state;
         }
 
-        public int[][] GetLiveNeighboursCounts()
+        // public int[][] GetLiveNeighboursCounts()
+        // {
+        //     
+        // }
+
+        public List<Cell> GetNeighbours()
         {
-            var counts = new int[Row][];
-
-            for (int i = 0; i < Row; i++)
-            {
-                counts[i] = new int[Column];
-                for (int j = 0; j < 3; j++)
-                {
-                    counts[i][j] = 0;
-
-                    for (int x = -1; x <= 1; x++)
-                    {
-                        for (int y = -1; y <= 1; y++)
-                        {
-                            var rowValue = i + x;
-                            var columnValue = j + y;
-                            if (rowValue < 0)
-                            {
-                                rowValue = Row - 1;
-                            }
-                            
-                            if (columnValue < 0)
-                            {
-                                columnValue = Column - 1;
-                            }
-                            
-                            if (rowValue > Row -1)
-                            {
-                                rowValue = 0;
-                            }
-                            
-                            if (columnValue > Column - 1)
-                            {
-                                columnValue = 0;
-                            }
-
-                            if (Cells[rowValue][columnValue].State == State.Live)
-                            {
-                                counts[i][j] += 1;
-                            }
-                        }
-                    }
-
-                    if (Cells[i][j].State == State.Live)
-                    {
-                        counts[i][j] -= 1;
-                    }
-                }
-            }
-            return counts;
+            return null;
         }
     }
 }

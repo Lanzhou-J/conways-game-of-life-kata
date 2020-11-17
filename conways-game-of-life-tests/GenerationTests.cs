@@ -38,7 +38,7 @@ namespace conways_game_of_life_tests
                 new[]{_dead}
                 };
             var generation = new Generation(cellStates,1);
-            var firstCell = generation.Cells[0][0];
+            var firstCell = generation.GetCell(0,0);
             var result = generation.GetNeighbours(firstCell);
             Assert.Empty(result);
         }
@@ -50,12 +50,12 @@ namespace conways_game_of_life_tests
                 new[]{_dead, _live},
             };
             var generation = new Generation(cellStates,1);
-            var firstCell = generation.Cells[0][0];
+            var firstCell = generation.GetCell(0,0);
             var result = generation.GetNeighbours(firstCell);
             Assert.NotEmpty(result);
             Assert.Equal(_live,result[0].State);
 
-            var secondCell = generation.Cells[0][1];
+            var secondCell = generation.GetCell(0,1);
             var secondResult = generation.GetNeighbours(secondCell);
             Assert.NotEmpty(result);
             Assert.Equal(_dead,secondResult[0].State);
@@ -69,7 +69,7 @@ namespace conways_game_of_life_tests
                 new[]{_dead, _dead}
             };
             var generation = new Generation(cellStates,1);
-            var cell = generation.Cells[0][1];
+            var cell = generation.GetCell(0,1);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(3,result.Count);
             foreach (var item in result)
@@ -87,7 +87,7 @@ namespace conways_game_of_life_tests
                 new[]{_dead, _dead, _dead}
             };
             var generation = new Generation(cellStates,1);
-            var cell = generation.Cells[1][1];
+            var cell = generation.GetCell(1,1);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(8,result.Count);
             foreach (var item in result)

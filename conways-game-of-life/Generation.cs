@@ -120,7 +120,7 @@ namespace conways_game_of_life
         {
             return new List<Cell>();
         }
-        
+
         public List<Cell> GetNeighbours(Cell cell)
         {
             var neighbours = new List<Cell>();
@@ -136,6 +136,11 @@ namespace conways_game_of_life
                 }
             }
             return neighbours;
+        }
+
+        public Cell GetCell(int X, int Y)
+        {
+            return Cells[X][Y];
         }
     }
 }

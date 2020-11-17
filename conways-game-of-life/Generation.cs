@@ -106,7 +106,7 @@ namespace conways_game_of_life
 
         public List<Cell> GetNeighbours()
         {
-            return null;
+            return new List<Cell>();
         }
     }
 }

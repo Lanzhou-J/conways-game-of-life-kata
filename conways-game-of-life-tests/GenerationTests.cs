@@ -20,7 +20,7 @@ namespace conways_game_of_life_tests
         }
 
         [Fact]
-        public void GetNeighboursShould_ReturnNull_WhenNoArgument()
+        public void GetNeighboursShould_ReturnEmptyList_WhenNoArgument()
         {
             var deadCell = new Cell();
             var liveCell = new Cell(State.Live);
@@ -30,7 +30,7 @@ namespace conways_game_of_life_tests
             };
             var generation = new Generation(cells,1);
             var result = generation.GetNeighbours();
-            Assert.Null(result);
+            Assert.Empty(result);
         }
 
     }

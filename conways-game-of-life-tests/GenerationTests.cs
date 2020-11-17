@@ -54,6 +54,12 @@ namespace conways_game_of_life_tests
             var result = generation.GetNeighbours(firstCell);
             Assert.NotEmpty(result);
             Assert.Equal(live,result[0].State);
+
+            var secondCell = generation.Cells[0][1];
+            var secondResult = generation.GetNeighbours(secondCell);
+            Assert.NotEmpty(result);
+            Assert.Equal(dead,secondResult[0].State);
+            
         }
 
     }

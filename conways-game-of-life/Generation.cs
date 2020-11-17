@@ -94,7 +94,7 @@ namespace conways_game_of_life
         public List<Cell> GetNeighbours(Cell cell)
         {
             var neighbours = new List<Cell>();
-            if (Row<=3 && Column<=3)
+            if (GenerationSizeIsSmall())
             {
                 AddAllTheRestOfCellsToNeighbours(cell, neighbours);
             }
@@ -104,32 +104,55 @@ namespace conways_game_of_life
                 {
                     for (var j = -1; j <= 1; j++)
                     {
-                        if (i == 0 && j == 0) continue;
-                        var neighbourX = cell.X + i;
-                        var neighbourY = cell.Y + j;
-
-                        if (neighbourY < 0)
-                        {
-                            neighbourY = Column - 1;
-                        }
-
-                        if (neighbourX < 0)
-                        {
-                            neighbourX = Row - 1;
-                        }
-
-                        if (neighbourY > Column - 1)
-                        {
-                            neighbourY = 0;
-                        }
-
+                        if (CellLocationIsInTheCenter(i, j)) continue;
+                        var neighbourX = GetNeighbourX(cell, i);
+                        var neighbourY = GetNeighbourY(cell, j);
                         var neighbour = Cells[neighbourX][neighbourY];
-                            
                         neighbours.Add(neighbour);
                     }
                 }
             }
             return neighbours;
+        }
+
+        private static bool CellLocationIsInTheCenter(int i, int j)
+        {
+            return i == 0 && j == 0;
+        }
+
+        private bool GenerationSizeIsSmall()
+        {
+            return Row<=3 && Column<=3;
+        }
+
+        private int GetNeighbourY(Cell cell, int j)
+        {
+            var neighbourY = cell.Y + j;
+            if (neighbourY < 0)
+            {
+                neighbourY = Column - 1;
+            }
+            else if (neighbourY > Column - 1)
+            {
+                neighbourY = 0;
+            }
+
+            return neighbourY;
+        }
+
+        private int GetNeighbourX(Cell cell, int i)
+        {
+            var neighbourX = cell.X + i;
+            if (neighbourX < 0)
+            {
+                neighbourX = Row - 1;
+            }
+            else if (neighbourX > Row - 1)
+            {
+                neighbourX = 0;
+            }
+
+            return neighbourX;
         }
 
         private bool IsOnBorder(Cell cell)

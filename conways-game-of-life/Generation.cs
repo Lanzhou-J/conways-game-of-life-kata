@@ -123,7 +123,19 @@ namespace conways_game_of_life
         
         public List<Cell> GetNeighbours(Cell cell)
         {
-            return new List<Cell>();
+            var neighbours = new List<Cell>();
+
+            for (int i = 0; i < Row; i++)
+            {
+                for (int j = 0; j < Column; j++)
+                {
+                    if (i!=cell.X || j!=cell.Y)
+                    {
+                        neighbours.Add(Cells[i][j]);
+                    }
+                }
+            }
+            return neighbours;
         }
     }
 }

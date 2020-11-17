@@ -24,7 +24,7 @@ namespace conways_game_of_life
         {
             var row = generation.Cells.GetLength(0);
             var column = generation.Cells[0].Length;
-            var newGeneration = new Generation(row, column);
+            
             
             // // old generation - calculating whether (0,0) is dead or live
             // // get all the neighbours for (0,0)
@@ -44,7 +44,7 @@ namespace conways_game_of_life
             //     }
             // }
             // copyGeneration = new Generation(copyGeneration.Cells, newCount);
-            return newGeneration;
+            return new Generation(row, column);
         }
     }
 }

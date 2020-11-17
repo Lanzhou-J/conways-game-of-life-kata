@@ -9,32 +9,34 @@ namespace conways_game_of_life
         public int[][] LiveNeighboursCounts { get; }
 
         public int GenerationCount { get; private set; }
-        
+
+        public static int LatestGenerationCount { get; private set; }
+
         public Cell CreateCellBasedOnCellState(Cell cell)
         {
             if (cell.State == State.Live)
             {
                 return new Cell(State.Dead);
             }
-
             return new Cell(State.Live);
-
         }
 
         public Generation(Cell[][] cells)
         {
             Cells = cells;
-            GenerationCount = 1;
+            GenerationCount = LatestGenerationCount + 1;
             Row = cells.Length;
             Column = cells[0].Length;
+            LatestGenerationCount = GenerationCount;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
         public Generation(int row, int column)
         {
             Cells = CreateDefaultCells(row, column);
-            GenerationCount = 1;
+            GenerationCount = LatestGenerationCount + 1;
             Row = row;
             Column = column;
+            LatestGenerationCount = GenerationCount;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
         
@@ -44,7 +46,7 @@ namespace conways_game_of_life
 
            for (int i = 0; i < row; i++)
            {
-               cells[i] = new Cell[3];
+               cells[i] = new Cell[column];
                for (int j = 0; j < column; j++)
                {
                    cells[i][j] = new Cell();
@@ -55,9 +57,10 @@ namespace conways_game_of_life
         public Generation(State[][] states)
         {
             Cells = CreateCells(states);
-            GenerationCount = 1;
+            GenerationCount = LatestGenerationCount + 1;
             Row = Cells.Length;
             Column = Cells[0].Length;
+            LatestGenerationCount = GenerationCount;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();
         }
 
@@ -80,6 +83,7 @@ namespace conways_game_of_life
         {
             Cells = cells;
             GenerationCount = generationCount;
+            LatestGenerationCount = generationCount;
             Row = cells.Length;
             Column = cells[0].Length;
             // LiveNeighboursCounts = GetLiveNeighboursCounts();

@@ -19,7 +19,7 @@ namespace conways_game_of_life_tests
             var cells = new[] {
                 new[]{deadCell}
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells, 1);
             Assert.Equal(1,input.GenerationCount);
             var result = Tick.GenerateNewGeneration(input);
             Assert.Equal(2, result.GenerationCount);
@@ -34,7 +34,7 @@ namespace conways_game_of_life_tests
                 new[]{deadCell, liveCell},
                 new []{deadCell, liveCell}
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells,1);
             Assert.Equal(1,input.GenerationCount);
             var result = Tick.GenerateNewGeneration(input);
             Assert.Equal(2, result.GenerationCount);
@@ -49,7 +49,7 @@ namespace conways_game_of_life_tests
                 new[]{deadCell, liveCell},
                 new []{deadCell, liveCell}
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells,1);
             var result = Tick.GenerateNewGeneration(input);
             for (int i = 0; i < input.Row; i++)
             {
@@ -72,7 +72,7 @@ namespace conways_game_of_life_tests
                 new []{deadCell, deadCell,deadCell},
                 new []{deadCell, deadCell,deadCell},
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells,1);
             var rule = new Rule();
             var result = Tick.GenerateNewGeneration(input,rule);
             for (int i = 0; i < input.Row; i++)
@@ -96,7 +96,7 @@ namespace conways_game_of_life_tests
                 new []{deadCell, deadCell,deadCell,deadCell},
                 new []{deadCell, deadCell,deadCell,deadCell},
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells,1);
             var rule = new Rule();
             var result = Tick.GenerateNewGeneration(input,rule);
             for (int i = 0; i < input.Row; i++)
@@ -126,11 +126,13 @@ namespace conways_game_of_life_tests
                 new []{deadCell, deadCell,deadCell},
                 new []{deadCell, deadCell,deadCell},
             };
-            var input = new Generation(cells);
+            var input = new Generation(cells,1);
             var rule = new Rule();
             Assert.Equal(1, input.GenerationCount);
             var result = Tick.GenerateNewGeneration(input,rule);
+            Assert.Equal(1, input.GenerationCount);
             Assert.Equal(2, result.GenerationCount);
+            Assert.Equal(2, Generation.LatestGenerationCount);
             for (int i = 0; i < input.Row; i++)
             {
                 for (int j = 0; j < input.Column; j++)
@@ -139,7 +141,10 @@ namespace conways_game_of_life_tests
                     var actualState = result.GetCellState(i,j);
                     var inputState = input.GetCellState(i, j);
                     Assert.Equal(expectState,actualState);
-                    Assert.NotEqual(expectState,inputState);
+                    if (i==1&&j==1)
+                    {
+                        Assert.NotEqual(expectState,inputState);
+                    }
                 }
             }
         }

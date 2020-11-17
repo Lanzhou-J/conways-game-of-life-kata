@@ -148,6 +148,11 @@ namespace conways_game_of_life
                             neighbourX = Row - 1;
                         }
 
+                        if (neighbourY > Column - 1)
+                        {
+                            neighbourY = 0;
+                        }
+
                         var neighbour = Cells[neighbourX][neighbourY];
                             
                         neighbours.Add(neighbour);

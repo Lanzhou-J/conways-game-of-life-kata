@@ -77,6 +77,24 @@ namespace conways_game_of_life_tests
                 Assert.Equal(_dead, item.State);
             }
         }
+        
+        [Fact]
+        public void GetNeighboursShould_ReturnAListWith8ells_WhenTheGenerationIs3times3()
+        {
+            var cellStates = new[] {
+                new[]{_dead, _dead, _dead},
+                new[]{_dead, _live, _dead},
+                new[]{_dead, _dead, _dead}
+            };
+            var generation = new Generation(cellStates,1);
+            var cell = generation.Cells[1][1];
+            var result = generation.GetNeighbours(cell);
+            Assert.Equal(8,result.Count);
+            foreach (var item in result)
+            {
+                Assert.Equal(_dead, item.State);
+            }
+        }
 
     }
 }

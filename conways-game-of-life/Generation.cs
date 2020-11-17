@@ -6,12 +6,12 @@ namespace conways_game_of_life
     public class Generation
     {
         public Cell[][] Cells { get; set; }
-        public int Row { get; }
-        public int Column { get; }
+        private int Row { get; }
+        private int Column { get; }
 
-        public int GenerationCount { get; private set; }
+        private int GenerationCount { get; set; }
 
-        public static int LatestGenerationCount { get; private set; }
+        private static int LatestGenerationCount { get; set; }
 
         public Generation(Cell[][] cells)
         {
@@ -29,8 +29,8 @@ namespace conways_game_of_life
             Column = column;
             LatestGenerationCount = GenerationCount;
         }
-        
-        public Cell[][] CreateDefaultCells(int row, int column)
+
+        private Cell[][] CreateDefaultCells(int row, int column)
         {
             var cells = new Cell[row][];
 
@@ -127,7 +127,7 @@ namespace conways_game_of_life
 
         private bool GenerationSizeIsSmall()
         {
-            return Row<=3 && Column<=3;
+            return Row <= 2 && Column <= 2;
         }
 
         private int GetNeighbourY(Cell cell, int j)
@@ -159,12 +159,7 @@ namespace conways_game_of_life
 
             return neighbourX;
         }
-
-        private bool IsOnBorder(Cell cell)
-        {
-            return (cell.X == 0 || cell.Y == 0 || cell.X == Row - 1 || cell.Y == Column - 1);
-        }
-
+        
         private void AddAllTheRestOfCellsToNeighbours(Cell cell, List<Cell> neighbours)
         {
             for (int i = 0; i < Row; i++)

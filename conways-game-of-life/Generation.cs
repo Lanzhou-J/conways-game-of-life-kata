@@ -130,18 +130,26 @@ namespace conways_game_of_life
             }
             else
             {
-                for (int i = -1; i <= 1; i++)
+                for (var i = -1; i <= 1; i++)
                 {
-                    for (int j = -1; j <= 1; j++)
+                    for (var j = -1; j <= 1; j++)
                     {
-                        if (i != 0 || j != 0)
-                        {
-                            neighbours.Add(Cells[cell.X+i][cell.Y+j]);
-                        }
+                        if (i == 0 && j == 0) continue;
+                        var neighbourX = cell.X + i;
+                        var neighbourY = cell.Y + j;
+
+                        var neighbour = neighbourY < 0 ? Cells[neighbourX][Column - 1] : Cells[neighbourX][neighbourY];
+                            
+                        neighbours.Add(neighbour);
                     }
                 }
             }
             return neighbours;
+        }
+
+        private bool IsOnBorder(Cell cell)
+        {
+            return (cell.X == 0 || cell.Y == 0 || cell.X == Row - 1 || cell.Y == Column - 1);
         }
 
         private void AddAllTheRestOfCellsToNeighbours(Cell cell, List<Cell> neighbours)

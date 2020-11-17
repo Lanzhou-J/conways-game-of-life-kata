@@ -22,25 +22,29 @@ namespace conways_game_of_life
         // Tick -> Generation -> Cell
         public static Generation GenerateNewGeneration(Generation generation, Rule rule)
         {
-            // old generation - calculating whether (0,0) is dead or live
-            // get all the neighbours for (0,0)
-            // this cell is alive in this interation - Live
-            // Generation - this cell (0,0) - is alive
-            var newCount = generation.GenerationCount + 1;
-            var copyGeneration = generation; // Generation() 0000
-            //To-Do: copy generation - without changing input generation. Deep Copy/ICloneable/Serialize?
-            foreach (var cellArray in copyGeneration.Cells)
-            {
-                foreach (var cell in cellArray)
-                {
-                    if (cell.State == State.Live)
-                    {
-                        cell.ChangeState();
-                    }
-                }
-            }
-            copyGeneration = new Generation(copyGeneration.Cells, newCount);
-            return copyGeneration;
+            var row = generation.Cells.GetLength(0);
+            var column = generation.Cells[0].Length;
+            var newGeneration = new Generation(row, column);
+            
+            // // old generation - calculating whether (0,0) is dead or live
+            // // get all the neighbours for (0,0)
+            // // this cell is alive in this interation - Live
+            // // Generation - this cell (0,0) - is alive
+            // var newCount = generation.GenerationCount + 1;
+            // var copyGeneration = generation; // Generation() 0000
+            // //To-Do: copy generation - without changing input generation. Deep Copy/ICloneable/Serialize?
+            // foreach (var cellArray in copyGeneration.Cells)
+            // {
+            //     foreach (var cell in cellArray)
+            //     {
+            //         if (cell.State == State.Live)
+            //         {
+            //             cell.ChangeState();
+            //         }
+            //     }
+            // }
+            // copyGeneration = new Generation(copyGeneration.Cells, newCount);
+            return newGeneration;
         }
     }
 }

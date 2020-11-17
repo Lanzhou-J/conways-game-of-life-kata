@@ -10,7 +10,7 @@ namespace conways_game_of_life_tests
         {
             var deadCell = new Cell();
             var liveCell = new Cell();
-            liveCell.ChangeState();
+            // liveCell.ChangeState();
             var cells = new[] {
                 new[]{deadCell, liveCell},
                 new []{deadCell, liveCell}

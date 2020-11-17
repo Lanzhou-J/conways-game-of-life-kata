@@ -125,7 +125,7 @@ namespace conways_game_of_life_tests
             };
             
             var generation = new Generation(cellStates,1);
-            var cell = generation.GetCell(1,1);
+            var cell = generation.GetCell(0,0);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(8,result.Count);
             var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));

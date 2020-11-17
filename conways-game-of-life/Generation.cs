@@ -1,15 +1,14 @@
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace conways_game_of_life
 {
     public class Generation
     {
-        public Cell[][] Cells { get; set; }
+        public Cell[][] Cells { get; }
         private int Row { get; }
         private int Column { get; }
 
-        private int GenerationCount { get; set; }
+        private int GenerationCount { get; }
 
         private static int LatestGenerationCount { get; set; }
 
@@ -30,14 +29,14 @@ namespace conways_game_of_life
             LatestGenerationCount = GenerationCount;
         }
 
-        private Cell[][] CreateDefaultCells(int row, int column)
+        private static Cell[][] CreateDefaultCells(int row, int column)
         {
             var cells = new Cell[row][];
 
-           for (int i = 0; i < row; i++)
+           for (var i = 0; i < row; i++)
            {
                cells[i] = new Cell[column];
-               for (int j = 0; j < column; j++)
+               for (var j = 0; j < column; j++)
                {
                    cells[i][j] = new Cell(i,j);
                }
@@ -53,15 +52,15 @@ namespace conways_game_of_life
             LatestGenerationCount = GenerationCount;
         }
 
-        private Cell[][] CreateCells(State[][] states)
+        private static Cell[][] CreateCells(State[][] states)
         {
             var row = states.GetLength(0);
             var column = states[0].Length;
             var cells = new Cell[row][];
-            for (int i = 0; i < row; i++)
+            for (var i = 0; i < row; i++)
             {
                 cells[i] = new Cell[column];
-                for (int j = 0; j < column; j++)
+                for (var j = 0; j < column; j++)
                 {
                     cells[i][j] = new Cell(states[i][j], i, j);
                 }

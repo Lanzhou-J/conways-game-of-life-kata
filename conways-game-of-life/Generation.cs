@@ -177,5 +177,15 @@ namespace conways_game_of_life
         {
             return Cells[x][y];
         }
+
+        public int[][] GetLiveNeighboursCountForAllCells()
+        {
+            var result = new[] {
+                new[]{0, 0, 0},
+                new[]{0, 0, 0},
+                new[]{0, 0, 0}
+            };
+            return result;
+        }
     }
 }

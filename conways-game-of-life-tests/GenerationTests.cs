@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using conways_game_of_life;
 using Xunit;
 
@@ -185,8 +186,8 @@ namespace conways_game_of_life_tests
             var cell = generation.GetCell(0,0);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(8,result.Count);
-            var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
-            var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
+            var liveNeighbours = GetLiveNeighbours(result);
+            var deadNeighbours = GetDeadNeighbours(result);
             Assert.Equal(7, deadNeighbours.Count);
             Assert.Single(liveNeighbours);
         }
@@ -204,8 +205,8 @@ namespace conways_game_of_life_tests
             var cell = generation.GetCell(1,3);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(8,result.Count);
-            var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
-            var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
+            var liveNeighbours = GetLiveNeighbours(result);
+            var deadNeighbours = GetDeadNeighbours(result);
             Assert.Equal(5, deadNeighbours.Count);
             Assert.Equal(3,liveNeighbours.Count);
         }
@@ -223,10 +224,42 @@ namespace conways_game_of_life_tests
             var cell = generation.GetCell(2,3);
             var result = generation.GetNeighbours(cell);
             Assert.Equal(8,result.Count);
-            var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
-            var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
+            var liveNeighbours = GetLiveNeighbours(result);
+            var deadNeighbours = GetDeadNeighbours(result);
             Assert.Equal(6, deadNeighbours.Count);
             Assert.Equal(2,liveNeighbours.Count);
+        }
+
+        private static List<Cell> GetDeadNeighbours(List<Cell> result)
+        {
+            var deadNeighbours = result.FindAll(x => x.State.Equals(State.Dead));
+            return deadNeighbours;
+        }
+
+        private static List<Cell> GetLiveNeighbours(List<Cell> result)
+        {
+            var liveNeighbours = result.FindAll(x => x.State.Equals(State.Live));
+            return liveNeighbours;
+        }
+
+        [Fact]
+        public void GetLiveNeighboursCountForAllCellsShould_ReturnExpectedResult_BasedOnCellsOfTheGeneration()
+        {
+            var cellStates = new[] {
+                new[]{_dead, _dead, _dead},
+                new[]{_dead, _dead, _dead},
+                new[]{_dead, _dead, _dead}
+            };
+            
+            var expectedResult = new[] {
+                new[]{0, 0, 0},
+                new[]{0, 0, 0},
+                new[]{0, 0, 0}
+            };
+            
+            var generation = new Generation(cellStates,1);
+
+           var actualResult = generation.GetLiveNeighboursCountForAllCells();
         }
     }
 }

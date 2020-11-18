@@ -243,7 +243,7 @@ namespace conways_game_of_life_tests
         }
 
         [Fact]
-        public void GetLiveNeighboursCountForAllCellsShould_ReturnExpectedResult_BasedOnCellsOfTheGeneration()
+        public void GetLiveNeighboursCountForAllCellsShould_ReturnExpectedResult_BasedOnCellsOfTheGenerationWhenCellsAreAllDead()
         {
             var cellStates = new[] {
                 new[]{_dead, _dead, _dead},
@@ -260,6 +260,28 @@ namespace conways_game_of_life_tests
             var generation = new Generation(cellStates,1);
 
            var actualResult = generation.GetLiveNeighboursCountForAllCells();
+           Assert.Equal(expectedResult, actualResult);
+        }
+        
+        [Fact]
+        public void GetLiveNeighboursCountForAllCellsShould_ReturnExpectedResult_BasedOnCellsOfTheGeneration()
+        {
+            var cellStates = new[] {
+                new[]{_dead, _dead, _dead},
+                new[]{_dead, _live, _dead},
+                new[]{_dead, _dead, _dead}
+            };
+            
+            var expectedResult = new[] {
+                new[]{1, 1, 1},
+                new[]{1, 0, 1},
+                new[]{1, 1, 1}
+            };
+            
+            var generation = new Generation(cellStates,1);
+
+            var actualResult = generation.GetLiveNeighboursCountForAllCells();
+            Assert.Equal(expectedResult, actualResult);
         }
     }
 }
